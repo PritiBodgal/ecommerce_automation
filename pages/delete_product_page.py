@@ -21,3 +21,4 @@ class Delete:
 
         message = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.locator['message'])))
         print(message.text)
+        

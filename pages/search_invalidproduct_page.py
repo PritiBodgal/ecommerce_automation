@@ -13,4 +13,6 @@ class Invalid_product():
         self.driver.find_element(By.XPATH,self.locator['search']).send_keys(search)
         self.driver.find_element(By.XPATH,self.locator['submit']).click()
         error_message=self.driver.find_element(By.XPATH,self.locator['error'])
-        print(error_message.text)
+        message_text = error_message.text
+        print(message_text)
+        return message_text
