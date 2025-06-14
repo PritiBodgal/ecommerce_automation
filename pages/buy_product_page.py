@@ -33,7 +33,7 @@ class Buy_product():
     def perform_buy_product(self):
         dropdown_hover = self.driver.find_element(By.XPATH, self.locator['dropdown'])
         self.actions.move_to_element(dropdown_hover).perform()
-        time.sleep(0.5)
+        time.sleep(2)
         tops = self.driver.find_element(By.XPATH, self.locator['tops'])
         self.actions.move_to_element(tops).perform()
         time.sleep(0.5)
