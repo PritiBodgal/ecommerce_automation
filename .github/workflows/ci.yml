@@ -1,9 +1,7 @@
-name: CI for Login Test Only
+name: CI - Login Test in Headless Chrome
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -24,9 +22,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Install Chrome
+      run: |
+        sudo apt update
+        sudo apt install -y google-chrome-stable
+
     - name: Add current directory to PYTHONPATH
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
-    - name: Run login test only
+    - name: Run login test
       run: |
         pytest tests/test_login.py -v --disable-warnings
