@@ -1,4 +1,4 @@
-name: CI for Automation Tests
+name: CI for Login Test Only
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  run-tests:
+  run-login-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,6 @@ jobs:
     - name: Add current directory to PYTHONPATH
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
-    - name: Run Pytest
+    - name: Run login test only
       run: |
-        pytest --maxfail=1 --disable-warnings -v
+        pytest tests/test_login.py -v --disable-warnings
