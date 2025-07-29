@@ -32,4 +32,4 @@ jobs:
 
     - name: Run login test
       run: |
-        pytest tests/test_login.py -v --disable-warnings
+        pytest tests/test_2login.py -v --disable-warnings
