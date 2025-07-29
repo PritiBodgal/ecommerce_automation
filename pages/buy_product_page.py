@@ -70,44 +70,46 @@ class Buy_product():
         cart_button.click()
 
     def checkout(self, address, city, zip, phone_no):
-        WebDriverWait(self.driver, 30).until(
+      try:
+          WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.locator['checkout_button']))
-        ).click()
+          ).click()
 
-        WebDriverWait(self.driver, 20).until(
-            EC.visibility_of_element_located((By.XPATH, self.locator['address']))
-        )
+          WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located((By.XPATH, self.locator['address'])))
 
-        self.driver.find_element(By.XPATH, self.locator['address']).send_keys(address)
-        self.driver.find_element(By.XPATH, self.locator['city']).send_keys(city)
+          self.driver.find_element(By.XPATH, self.locator['address']).send_keys(address)
+          self.driver.find_element(By.XPATH, self.locator['city']).send_keys(city)
 
-        #state = self.driver.find_element(By.XPATH, self.locator['state'])
-       # Select(state).select_by_index(4)
+          #state = self.driver.find_element(By.XPATH, self.locator['state'])
+          # Select(state).select_by_index(4)
 
-        self.driver.find_element(By.XPATH, self.locator['zip']).send_keys(zip)
+          self.driver.find_element(By.XPATH, self.locator['zip']).send_keys(zip)
 
-        country = self.driver.find_element(By.XPATH, self.locator['country'])
-        Select(country).select_by_index(3)
+          country = self.driver.find_element(By.XPATH, self.locator['country'])
+          Select(country).select_by_index(3)
 
-        self.driver.find_element(By.XPATH, self.locator['phone_no']).send_keys(phone_no)
+          self.driver.find_element(By.XPATH, self.locator['phone_no']).send_keys(phone_no)
 
-        time.sleep(5)
-        WebDriverWait(self.driver, 30).until(
+          time.sleep(5)
+          WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.locator['shipping_method']))
-        ).click()
+          ).click()
 
-        time.sleep(0.5)
+          time.sleep(0.5)
 
-        button = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.locator['button']))
-        )
-        self.driver.execute_script("arguments[0].click();", button)
+          button = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.locator['button'])))
+          self.driver.execute_script("arguments[0].click();", button)
 
-        order_button = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.XPATH, self.locator['order']))
-        )
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", order_button)
-        time.sleep(1)  # Optional wait for stability
-        order_button.click()
+          order_button = WebDriverWait(self.driver, 30).until(
+          EC.element_to_be_clickable((By.XPATH, self.locator['order'])))
+
+          self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", order_button)
+          time.sleep(1)
+          order_button.click()
+
+      except Exception as e:
+          print(f"Issue:{e}")
 
 

@@ -6,7 +6,8 @@ class Login:
         self.locator={
             "email":'//*[@id="email"]',
             "password":'//*[@id="pass"]',
-            "submit":'//*[@id="send2"]'
+            "submit":'//*[@id="send2"]',
+            'invalid_msg':'//*[@id="maincontent"]/div[2]/div[2]/div/div/div'
         }
 
     def perform_login(self,email,password):
@@ -15,3 +16,8 @@ class Login:
         self.driver.find_element(By.XPATH,self.locator['email']).send_keys(email)
         self.driver.find_element(By.XPATH,self.locator['password']).send_keys(password)
         self.driver.find_element(By.XPATH,self.locator['submit']).click()
+
+    def invalid_message(self):
+        message=self.driver.find_element(By.XPATH,self.locator['invalid_msg'])
+        invalid_message=message.text
+        return invalid_message
