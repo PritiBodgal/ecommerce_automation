@@ -6,7 +6,7 @@ def test_buy_product(setup):
     login_page = Login(driver)
 
 
-    login_page.perform_login("prachi6606200@gmail.com", "Test&1234")
+    login_page.perform_login("prachi6774k900@gmail.com", "Test&1234")
 
     buy = Buy_product(driver)
     buy.perform_buy_product()

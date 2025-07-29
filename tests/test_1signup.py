@@ -3,7 +3,7 @@ from pages.signup_page import Signup
 def test_signup(setup):
     driver = setup
     signup_page = Signup(driver)
-    signup_page.perform_signup("prachi", "bodgal", "prachi6606299900@gmail.com", "Test&1234", "Test&1234")
+    signup_page.perform_signup("prachi", "bodgal", "prachi6774k900@gmail.com", "Test&1234", "Test&1234")
     assert "My Account" in driver.title
 
 def test_duplicate_signup(setup):
